@@ -1,5 +1,6 @@
 import React from 'react'
 import * as mui from 'material-ui/'
+import {isLogged} from './isLogged'
 
 const styles = theme => ({
     mainGrid: {
@@ -25,29 +26,6 @@ class Login extends React.Component {
             username: '',
             password: '',
         }
-    }
-    handleChange = name => event => {
-        this.setState({    
-            [name]: event.target.value,
-        })
-    }
-    handleClick = () => {
-        const body = this.state
-        fetch('http://localhost:3001/user/login', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'                
-            },
-            credentials: 'include',
-            body: JSON.stringify(body),
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-        }).catch(error => {
-            console.log(error);
-        })
     }
     render() {
         const { classes } = this.props;
@@ -79,15 +57,47 @@ class Login extends React.Component {
                         </mui.Grid>
                         <mui.Grid item>
                             <mui.Grid container justify="center">
-                                <mui.Button className={classes.button} variant="raised" color="secondary" onClick={this.handleClick}>
-                                    LOGIN
-                                </mui.Button>
+                                <isLogged.Consumer>
+                                    {({changeAuth}) => (
+                                        <div>
+                                            <mui.Button className={classes.button} variant="raised" color="secondary" onClick={this.handleLogin(changeAuth)}>
+                                                LOGIN
+                                            </mui.Button>
+                                        </div>
+                                    )}
+                                </isLogged.Consumer>    
                             </mui.Grid>
                         </mui.Grid>
                 </mui.Grid>
             </mui.Grid>            
         );
-    }    
+    }
+    handleChange = name => event => {
+        this.setState({
+            [name]: event.target.value,
+        })
+    }
+    handleLogin = callback => () => {
+        const body = this.state
+        fetch('http://localhost:3001/user/login', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include',
+            body: JSON.stringify(body),
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 200) {
+                    callback();
+                }
+                console.log(data);
+            }).catch(error => {
+                console.log(error);
+            })
+    }
 }
 
 export default mui.withStyles(styles)(Login);
