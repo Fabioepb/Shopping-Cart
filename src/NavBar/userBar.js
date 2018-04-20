@@ -1,7 +1,6 @@
 import React from 'react'
 import * as mui from 'material-ui'
 
-
 const styles = theme => ({
     logButton: {
         color: 'white',
@@ -20,7 +19,7 @@ class UserBar extends React.Component {
                     aria-label="open drawer"
                     onClick={handleDrawer}                                            
                 > 
-                    
+                
                 </mui.IconButton>
             </div>
         )

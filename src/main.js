@@ -16,7 +16,7 @@ const styles = theme =>({
     container: {
         flexGrow: 1,
         backgroundColor: theme.palette.background.default,
-        paddingTop: theme.spacing.unit * 10,
+        // paddingTop: theme.spacing.unit * 10,
         transition: theme.transitions.create('margin', {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,        
