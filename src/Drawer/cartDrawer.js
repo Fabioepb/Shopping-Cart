@@ -1,19 +1,20 @@
 import React from 'react'
 import * as mui from 'material-ui';
+import PersonIcon from '@material-ui/icons/Person'
 
 export const drawerWidth = 240;
 
 const styles = theme => ({
     drawerPaper : {
-        backgroundColor:'black',
         position:'relative',
         width: drawerWidth,
     },
     drawerHeader: {
+        marginTop: theme.spacing.unit *10,
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'flex-end',
-        // padding: '0 8px',
+        justifyContent: 'center',
+        padding: '0 8px',
     },
 })
 
@@ -29,7 +30,11 @@ class CartDrawer extends React.Component {
             open={open} 
             classes={{ paper: classes.drawerPaper, }}
             >
-                
+             <div className={classes.drawerHeader}>
+                <mui.IconButton>
+                    <PersonIcon />
+                </mui.IconButton>
+            </div>   
             </mui.Drawer>
         )
     }

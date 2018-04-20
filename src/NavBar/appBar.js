@@ -10,9 +10,12 @@ const styles = theme => ({
         zIndex: theme.zIndex.drawer + 1,
         position: 'absolute',
     },
+    titleContainer: {
+        display:'flex',
+        alignItems:'center',
+    },
     title: {
-        color: 'white',
-        marginTop: 5,
+        color: 'white',        
     },
     noLinkStyle: {
         textDecoration: 'none',
@@ -34,7 +37,7 @@ class TopBar extends React.Component {
                 >
                     <mui.Toolbar>
                         <mui.Grid container justify="space-between">
-                            <mui.Grid item>
+                            <mui.Grid item className={classes.titleContainer}>
                                 <Link to="/" className={classes.noLinkStyle}>
                                 <mui.Typography variant="title" className={classes.title}>
                                     Shopping-cart

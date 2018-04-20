@@ -1,5 +1,6 @@
 import React from 'react'
 import * as mui from 'material-ui'
+import MenuIcon from '@material-ui/icons/Menu';
 
 const styles = theme => ({
     logButton: {
@@ -19,7 +20,7 @@ class UserBar extends React.Component {
                     aria-label="open drawer"
                     onClick={handleDrawer}                                            
                 > 
-                
+                    <MenuIcon />
                 </mui.IconButton>
             </div>
         )
