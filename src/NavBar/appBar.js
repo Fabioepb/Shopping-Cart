@@ -1,13 +1,14 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
 import { isLogged } from '../Login/isLogged'
-import * as mui from 'material-ui/';
+import * as mui from 'material-ui/'
 import CommonBar from './commonBar'
 import UserBar from './userBar'
 
 const styles = theme => ({
-    root: {
-        flexGrow: 1
+    appBar: {
+        zIndex: theme.zIndex.drawer + 1,
+        position: 'absolute',
     },
     title: {
         color: 'white',
@@ -20,11 +21,17 @@ const styles = theme => ({
 });
 
 class TopBar extends React.Component {
+
     render() {
-        const {classes} = this.props;
+        const {handleDrawer,classes} = this.props;
+
         return (
-            <div className={classes.root}>
-                <mui.AppBar position="static" color="secondary">
+            <div>
+                <mui.AppBar 
+                    position="static" 
+                    color="secondary" 
+                    className={classes.appBar}                    
+                >
                     <mui.Toolbar>
                         <mui.Grid container justify="space-between">
                             <mui.Grid item>
@@ -36,22 +43,24 @@ class TopBar extends React.Component {
                             </mui.Grid>
                             <mui.Grid item>
                                 <isLogged.Consumer>
-                                    {({authType,changeAuth}) => (
-                                    <div>
+                                {({authType,changeAuth}) => (
+                                    <div>                                        
                                         {(authType==='invited') ? (
-                                        <CommonBar noLinkStyle={classes.noLinkStyle} /> ) : (
-                                        <UserBar changeAuth={changeAuth}/>
+                                            <CommonBar noLinkStyle={classes.noLinkStyle} /> ) : (
+                                            <UserBar handleDrawer={handleDrawer} changeAuth={changeAuth}/>
                                         )}
                                     </div>
-                                    )}
+                                )}
                                 </isLogged.Consumer>
                             </mui.Grid>
                         </mui.Grid>
                     </mui.Toolbar>
                 </mui.AppBar>
+                
             </div>
         );
     }
+
 }
 
 export default mui.withStyles(styles)(TopBar);

@@ -1,6 +1,7 @@
 import React from 'react'
 import * as mui from 'material-ui'
 
+
 const styles = theme => ({
     logButton: {
         color: 'white',
@@ -9,11 +10,18 @@ const styles = theme => ({
 
 class UserBar extends React.Component {
     render() {
-        const { changeAuth, ...classes } = this.props;
+        const { changeAuth, handleDrawer, ...classes } = this.props;
 
         return (
             <div>                
                 <mui.Button className={classes.logButton} onClick={this.handleLogout(changeAuth)}>LOGOUT</mui.Button>
+                <mui.IconButton
+                    color="inherit"
+                    aria-label="open drawer"
+                    onClick={handleDrawer}                                            
+                > 
+                    
+                </mui.IconButton>
             </div>
         )
     }

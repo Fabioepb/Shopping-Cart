@@ -58,13 +58,13 @@ class Login extends React.Component {
                         <mui.Grid item>
                             <mui.Grid container justify="center">
                                 <isLogged.Consumer>
-                                    {({changeAuth}) => (
-                                        <div>
-                                            <mui.Button className={classes.button} variant="raised" color="secondary" onClick={this.handleLogin(changeAuth)}>
-                                                LOGIN
-                                            </mui.Button>
-                                        </div>
-                                    )}
+                                {({changeAuth}) => (
+                                    <div>
+                                        <mui.Button className={classes.button} variant="raised" color="secondary" onClick={this.handleLogin(changeAuth)}>
+                                            LOGIN
+                                        </mui.Button>
+                                    </div>
+                                )}
                                 </isLogged.Consumer>    
                             </mui.Grid>
                         </mui.Grid>

@@ -1,5 +1,7 @@
 import React from 'react'
-import {isLogged} from '../Login/isLogged'
+import { Link } from 'react-router-dom'
+import { isLogged } from '../Login/isLogged'
+
 
 class Home extends React.Component {
     
@@ -10,6 +12,9 @@ class Home extends React.Component {
                 <div>
                     <h1>Welcome! {authType} asda1 </h1>
                     <button onClick={changeAuth}>test</button>
+                    <Link to='/profile'> 
+                        <button>profileTest</button>
+                    </Link>
                 </div>
                 )}
             </isLogged.Consumer>

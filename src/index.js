@@ -1,9 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
-import Routes from './routes'
-import TopBar from './NavBar/appBar'
 import {isLogged} from './Login/isLogged'
+import Main from './main'
 
 class App extends React.Component {
     constructor() {
@@ -24,9 +23,8 @@ class App extends React.Component {
     render() {
         return (         
             <div>
-                <isLogged.Provider value={this.state}>
-                    <TopBar state={this.state.authType} />
-                    <Routes state={this.state.authType} />
+                <isLogged.Provider value={this.state}>                    
+                    <Main /> 
                 </isLogged.Provider>
             </div>              
         );
