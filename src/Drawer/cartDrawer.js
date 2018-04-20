@@ -1,6 +1,7 @@
 import React from 'react'
-import * as mui from 'material-ui';
+import * as mui from 'material-ui'
 import PersonIcon from '@material-ui/icons/Person'
+import {isLogged} from './../Login/isLogged'
 
 export const drawerWidth = 240;
 
@@ -10,12 +11,22 @@ const styles = theme => ({
         width: drawerWidth,
     },
     drawerHeader: {
-        marginTop: theme.spacing.unit *10,
+        marginTop: theme.spacing.unit * 9,
+        marginBottom: '1px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         padding: '0 8px',
     },
+    panel: {
+        display: 'flex',
+        flexGrow: 1,
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+    detailPanel: {
+        padding: '0 0 10px 0 '
+    }
 })
 
 class CartDrawer extends React.Component {
@@ -29,21 +40,52 @@ class CartDrawer extends React.Component {
             anchor="right"
             open={open} 
             classes={{ paper: classes.drawerPaper, }}
-            >
-             <div className={classes.drawerHeader}>
-                <mui.IconButton>
-                    <PersonIcon />
-                </mui.IconButton>
-            </div>   
+            >        
+            <div className={classes.drawerHeader}>
+                <mui.ExpansionPanel 
+                    className={classes.panel}
+                    elevation={0}
+                >
+                    <mui.ExpansionPanelSummary >
+                        <mui.IconButton style={{padding:'0'}}>
+                            <PersonIcon/>
+                        </mui.IconButton>
+                    </mui.ExpansionPanelSummary>
+                    <mui.ExpansionPanelDetails className={classes.detailPanel}>
+                        <isLogged.Consumer>
+                            {({changeAuth}) => (
+                                <mui.Button onClick={this.handleLogout(changeAuth)}>LOGOUT</mui.Button>
+                            )}
+                        </isLogged.Consumer>
+                    </mui.ExpansionPanelDetails>
+                </mui.ExpansionPanel>
+            </div>            
+            <mui.Divider /> 
+            <div>
+                AQUI VAN LOS ITEMS
+            </div>
             </mui.Drawer>
         )
     }
 
+    handleLogout = callback => () => {
+        fetch('http://localhost:3001/user/logout', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include',
+        }).then(response => response.json())
+        .then(data => {
+            if(data.status === 200) {
+                callback();
+            }
+            console.log(data)
+        }).catch(error => {
+            console.log(error)
+        })
+    }
 }
-/* <div className={classes.drawerHeader}>
-    <mui.IconButton onClick={handleDrawer}>
-        C
-    </mui.IconButton>
-</div> */
 
 export default mui.withStyles(styles)(CartDrawer)

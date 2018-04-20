@@ -46,11 +46,11 @@ class TopBar extends React.Component {
                             </mui.Grid>
                             <mui.Grid item>
                                 <isLogged.Consumer>
-                                {({authType,changeAuth}) => (
+                                {({authType}) => (
                                     <div>                                        
                                         {(authType==='invited') ? (
                                             <CommonBar noLinkStyle={classes.noLinkStyle} /> ) : (
-                                            <UserBar handleDrawer={handleDrawer} changeAuth={changeAuth}/>
+                                            <UserBar handleDrawer={handleDrawer}/>
                                         )}
                                     </div>
                                 )}
