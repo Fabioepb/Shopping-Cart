@@ -4,6 +4,7 @@ import TopBar from './NavBar/appBar'
 import * as mui from 'material-ui'
 import classNames from 'classnames'
 import CartDrawer, {drawerWidth} from './Drawer/cartDrawer'
+import { isLogged } from "./Login/isLogged";
 
 const styles = theme =>({
     root: {
@@ -11,11 +12,11 @@ const styles = theme =>({
         overflow: 'hidden',
         position: 'relative',
         display: 'flex',
-        width: '100%',
+        // width: '100%',
     },
     container: {
         flexGrow: 1,
-        backgroundColor: theme.palette.background.default,
+        backgroundColor: 'white', // theme.palette.background.default
         paddingTop: theme.spacing.unit * 8,
         transition: theme.transitions.create('margin', {
             easing: theme.transitions.easing.sharp,
@@ -37,7 +38,7 @@ class Main extends React.Component {
     constructor() {
         super();
         this.state = {
-            open: true
+            open: false
         }
     }
 
@@ -54,7 +55,16 @@ class Main extends React.Component {
                 })}>
                 <Routes />
                 </div>
-                <CartDrawer open={open} />               
+                <isLogged.Consumer>
+                    {({authType}) => (
+                        <div>
+                            {(authType === 'invited') ? (
+                                <CartDrawer open={false} />) : (
+                                <CartDrawer open={open} />
+                            )}
+                        </div>
+                    )}
+                </isLogged.Consumer>              
             </div>
         )
     }

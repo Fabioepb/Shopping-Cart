@@ -2,6 +2,7 @@ import React from 'react'
 import * as mui from 'material-ui'
 import PersonIcon from '@material-ui/icons/Person'
 import {isLogged} from './../Login/isLogged'
+import {Link} from 'react-router-dom'
 
 export const drawerWidth = 240;
 
@@ -55,8 +56,11 @@ class CartDrawer extends React.Component {
                         <isLogged.Consumer>
                             {({changeAuth}) => (
                                 <mui.Button onClick={this.handleLogout(changeAuth)}>LOGOUT</mui.Button>
-                            )}
+                            )}                            
                         </isLogged.Consumer>
+                        <Link to="/profile" style={{textDecoration:'none'}}>
+                                <mui.Button >Profile</mui.Button>
+                        </Link>
                     </mui.ExpansionPanelDetails>
                 </mui.ExpansionPanel>
             </div>            
@@ -69,7 +73,7 @@ class CartDrawer extends React.Component {
     }
 
     handleLogout = callback => () => {
-        fetch('http://localhost:3001/user/logout', {
+        fetch('http://localhost:10036/user/logout', {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',

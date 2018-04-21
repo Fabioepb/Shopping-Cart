@@ -8,10 +8,11 @@ class App extends React.Component {
     constructor() {
         super();     
         this.state = {
-            authType: 'invited',
+            authType: 'logged',
             changeAuth: this.handleAuth,
         }
     }
+    // TODO: fix login validation
     handleAuth = (auth) => {
         this.setState(state => ({
             authType: 
