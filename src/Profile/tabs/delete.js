@@ -8,7 +8,7 @@ const styles = theme => ({
 class DeleteTab extends React.Component {
 
     render() {
-        const { classes } = this.props;
+        // const { classes } = this.props;
         return (
             <div>
             </div>

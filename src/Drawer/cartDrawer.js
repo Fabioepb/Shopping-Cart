@@ -90,6 +90,10 @@ class CartDrawer extends React.Component {
             console.log(error)
         })
     }
+
+    addItem = () => {
+        
+    }
 }
 
 export default mui.withStyles(styles)(CartDrawer)

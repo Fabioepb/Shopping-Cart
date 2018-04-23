@@ -68,7 +68,6 @@ class Main extends React.Component {
             </div>
         )
     }
-
     handleDrawer = () => {
         this.setState(state => ({
             open: 
