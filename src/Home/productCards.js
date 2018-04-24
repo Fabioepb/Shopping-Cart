@@ -28,8 +28,8 @@ class ProductCard extends React.Component {
 
     render() {
         const {classes} = this.props;
-        const {name,username,price,stock} = this.props.data;
-        // brand,description,img
+        const {productid,name,username,price,stock} = this.props.data;
+        // brand,description,img,name,price,productid,stock,userid,username
 
         return (
             <mui.Card className={classes.card}>
@@ -57,7 +57,7 @@ class ProductCard extends React.Component {
                         <mui.CardActions className={classes.action}>
                             {(authType==='invited') ? (
                                 <div />) : (
-                                <CardOptions />
+                                <CardOptions id={productid}/>
                             )}
                         </mui.CardActions>             
                     )}                              

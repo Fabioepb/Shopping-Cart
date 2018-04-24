@@ -4,43 +4,49 @@ import { addToCart } from './../store/actions'
 import { connect } from 'react-redux'
 
 // Presentational
-const PresentationalOptions = ({ handleClick }) => (
+const Options = ({ handleClick }) => (
     <mui.Button onClick={handleClick} color="primary" variant="raised">
         ADD to cart
     </mui.Button>
 );
 
 // Container
-class ContainerOptions extends React.Component {
-    handleCick = () => {    
-        let {onCartUpdate} = this.props;
-        fetch('http://localhost:10036/cart/items', {
-            method: 'GET',
+class OptionsContainer extends React.Component {
+
+    handleClick = () => {
+        let { onCartUpdate } = this.props;
+        let body = {
+            productId: this.props.id,
+            quantity: 1, // TODO: cambiar por cantidad DINAMICA
+        }
+        fetch('http://localhost:10036/cart/add', {
+            method:'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            credentials: 'include',
+            credentials:'include',
+            body: JSON.stringify(body),
         }).then(response => response.json())
-            .then(data => {                
-                console.log(data)   
-                onCartUpdate(data.items);
-            }).catch(error => {
-                console.log(error)
-            })
+        .then(data => {
+            onCartUpdate(data.item);
+        }).catch(error => {
+            console.log(error);
+        })
     }
-    render() {
 
+    render() {
+        
         return (
-            <PresentationalOptions handleClick={this.handleCick} />
+            <Options handleClick={this.handleClick} />
         );
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onCartUpdate: (items) => {
-            dispatch(addToCart(items));
+        onCartUpdate: (item) => {
+            dispatch(addToCart(item));
         }
     }
 }
@@ -48,6 +54,6 @@ const mapDispatchToProps = dispatch => {
 const CardOptions = connect(
     null,
     mapDispatchToProps,
-)(ContainerOptions)
+)(OptionsContainer)
 
 export default CardOptions

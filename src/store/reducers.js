@@ -1,11 +1,11 @@
 import { ADD_TO_CART } from "./actions";
 
-function reducers(state = {items: []}, action) {
+function reducers(state = {item: null}, action) {
     switch(action.type) {
         case ADD_TO_CART: {
             return Object.assign({}, state, {
                 type: ADD_TO_CART,
-                items: action.items,
+                item: action.item,
             })
         }
         default: {

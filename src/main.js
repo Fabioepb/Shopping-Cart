@@ -59,7 +59,7 @@ class Main extends React.Component {
                     {({authType}) => (
                         <div>
                             {(authType === 'invited') ? (
-                                <CartDrawer open={false} />) : (
+                                <div style={{position:'relative', width:drawerWidth}} /> ) : ( // LA MARAÑA DEL AÑOOOOOOOOOOO! 
                                 <CartDrawer open={open} />
                             )}
                         </div>

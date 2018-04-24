@@ -91,9 +91,7 @@ class CartDrawer extends React.Component {
             console.log(error)
         })
     }
-    componentDidMount = () => {
-        console.log('SE MONTO EL DRAWER WER WER WER')
-    }
+    
 }
 
 export default mui.withStyles(styles)(CartDrawer)

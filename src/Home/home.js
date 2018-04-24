@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { isLogged } from '../Login/isLogged'
-import ProductCard from './cards'
+import ProductCard from './productCards'
 import * as mui from 'material-ui'
 // TEST 2
 
@@ -41,7 +41,7 @@ class Home extends React.Component {
                         </div>
                     )}
                 </isLogged.Consumer>
-                <mui.Grid container spacing={24}>
+                <mui.Grid container spacing={24} justify="center">
                     {cards}
                 </mui.Grid>
             </div>
