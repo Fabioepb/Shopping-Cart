@@ -3,6 +3,7 @@ import * as mui from 'material-ui'
 import PersonIcon from '@material-ui/icons/Person'
 import {isLogged} from './../Login/isLogged'
 import {Link} from 'react-router-dom'
+import ShoppingCart from './shoppingCart'
 
 export const drawerWidth = 240;
 
@@ -66,7 +67,7 @@ class CartDrawer extends React.Component {
             </div>            
             <mui.Divider /> 
             <div>
-                AQUI VAN LOS ITEMS
+                <ShoppingCart />
             </div>
             </mui.Drawer>
         )
@@ -90,9 +91,8 @@ class CartDrawer extends React.Component {
             console.log(error)
         })
     }
-
-    addItem = () => {
-        
+    componentDidMount = () => {
+        console.log('SE MONTO EL DRAWER WER WER WER')
     }
 }
 

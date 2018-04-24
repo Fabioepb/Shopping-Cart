@@ -1,14 +1,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
-import {isLogged} from './Login/isLogged'
+import { isLogged } from './Login/isLogged'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import reducers from './store/reducers'
 import Main from './main'
+
+let store = createStore(reducers);
 
 class App extends React.Component {
     constructor() {
         super();     
         this.state = {
-            authType: 'logged',
+            authType: 'invited',
             changeAuth: this.handleAuth,
         }
     }
@@ -24,9 +29,11 @@ class App extends React.Component {
     render() {
         return (         
             <div>
-                <isLogged.Provider value={this.state}>                    
-                    <Main /> 
-                </isLogged.Provider>
+                <Provider store={store}>
+                    <isLogged.Provider value={this.state}>                    
+                        <Main /> 
+                    </isLogged.Provider>
+                </Provider>
             </div>              
         );
     }

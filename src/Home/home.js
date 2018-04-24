@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { isLogged } from '../Login/isLogged'
 import ProductCard from './cards'
 import * as mui from 'material-ui'
+// TEST 2
 
 const styles = theme => ({
     root: {
@@ -20,8 +21,8 @@ class Home extends React.Component {
     
     render() {
         const {classes} = this.props;
-        const products = this.state.list;
-        const list = products.map((product) =>
+        const {list} = this.state;
+        const cards = list.map((product) =>
             <mui.Grid key={product.productid} item>
                 <ProductCard data={product} />
             </mui.Grid>
@@ -41,7 +42,7 @@ class Home extends React.Component {
                     )}
                 </isLogged.Consumer>
                 <mui.Grid container spacing={24}>
-                    {list}
+                    {cards}
                 </mui.Grid>
             </div>
         );

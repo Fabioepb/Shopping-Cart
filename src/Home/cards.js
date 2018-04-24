@@ -1,6 +1,7 @@
 import React from 'react'
 import * as mui from 'material-ui'
 import {isLogged} from './../Login/isLogged'
+import CardOptions from './cardOptions'
 
 const styles = theme => ({
     card: {
@@ -56,7 +57,7 @@ class ProductCard extends React.Component {
                         <mui.CardActions className={classes.action}>
                             {(authType==='invited') ? (
                                 <div />) : (
-                                <Options />
+                                <CardOptions />
                             )}
                         </mui.CardActions>             
                     )}                              
@@ -66,10 +67,6 @@ class ProductCard extends React.Component {
     }
 }
 
-const Options = (props) => (
-    <mui.Button color="primary" variant="raised">
-        ADD to cart
-    </mui.Button>
-);
+
 
 export default mui.withStyles(styles)(ProductCard)
