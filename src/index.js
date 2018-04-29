@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
-import { isLogged } from './Login/isLogged'
+import { isLogged } from './contexts/isLogged'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import reducers from './store/reducers'
+import reducers from './reducers'
 import Main from './main'
 
 let store = createStore(reducers);
@@ -25,6 +25,26 @@ class App extends React.Component {
                 ? 'logged'
                 : 'invited',
         }))
+    }
+    componentDidMount = () => {
+        fetch('http://localhost:10036/user/auth', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include',
+        }).then(response => response.json())
+            .then(data => {
+                this.setState({
+                    authType: data.auth,
+                });
+            }).catch(error => {
+                this.setState({
+                    authType: 'invited',
+                });
+                console.log(error)
+            })
     }
     render() {
         return (         

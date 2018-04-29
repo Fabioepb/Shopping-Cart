@@ -1,8 +1,8 @@
 import React from 'react'
 import * as mui from 'material-ui'
 import { withStyles } from 'material-ui';
-import AddTab from './tabs/add';
-import DeleteTab from './tabs/delete';
+import AddTab from './components/AddTab';
+import DeleteTab from './components/DeleteTab/';
 
 const styles = theme => ({
     root: {

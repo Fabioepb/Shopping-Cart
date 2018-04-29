@@ -1,7 +1,7 @@
 import React from 'react'
 import * as mui from 'material-ui'
-import { addToCart } from './../store/actions'
 import { connect } from 'react-redux'
+import { addToCart } from '../../../actions/'
 
 // Presentational
 const Options = ({ handleClick }) => (
@@ -16,7 +16,7 @@ class OptionsContainer extends React.Component {
     handleClick = () => {
         let { onCartUpdate } = this.props;
         let body = {
-            productId: this.props.id,
+            productId: this.props.data.productid,
             quantity: 1, // TODO: cambiar por cantidad DINAMICA
         }
         fetch('http://localhost:10036/cart/add', {
@@ -51,9 +51,9 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-const CardOptions = connect(
+const CartOptions = connect(
     null,
     mapDispatchToProps,
 )(OptionsContainer)
 
-export default CardOptions
+export default CartOptions

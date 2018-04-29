@@ -1,9 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import * as mui from 'material-ui'
 import PersonIcon from '@material-ui/icons/Person'
-import {isLogged} from './../Login/isLogged'
-import {Link} from 'react-router-dom'
-import ShoppingCart from './shoppingCart'
+import {isLogged} from './../../contexts/isLogged'
+import Cart from './components/Cart'
 
 export const drawerWidth = 240;
 
@@ -67,7 +67,7 @@ class CartDrawer extends React.Component {
             </div>            
             <mui.Divider /> 
             <div>
-                <ShoppingCart />
+                <Cart />
             </div>
             </mui.Drawer>
         )

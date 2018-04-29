@@ -1,10 +1,10 @@
 import React from 'react'
 import Routes from './routes'
-import TopBar from './NavBar/appBar'
+import TopBar from './components/NavBar'
 import * as mui from 'material-ui'
 import classNames from 'classnames'
-import CartDrawer, {drawerWidth} from './Drawer/cartDrawer'
-import { isLogged } from "./Login/isLogged";
+import CartDrawer, {drawerWidth} from './components/Drawer'
+import { isLogged } from "./contexts/isLogged";
 
 const styles = theme =>({
     root: {
@@ -53,7 +53,7 @@ class Main extends React.Component {
                     className={classNames(classes.container, { 
                         [classes.containerShift]: open,                         
                 })}>
-                <Routes />
+                    <Routes />
                 </div>
                 <isLogged.Consumer>
                     {({authType}) => (

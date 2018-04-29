@@ -1,6 +1,6 @@
 import React from 'react'
 import * as mui from 'material-ui/'
-import {isLogged} from './isLogged'
+import {isLogged} from './../../contexts/isLogged'
 
 const styles = theme => ({
     mainGrid: {

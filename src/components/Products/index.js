@@ -1,7 +1,6 @@
 import React from 'react'
 import * as mui from 'material-ui'
-import {isLogged} from './../Login/isLogged'
-import CardOptions from './cardOptions'
+import {isLogged} from '../../contexts/isLogged'
 
 const styles = theme => ({
     card: {
@@ -28,7 +27,7 @@ class ProductCard extends React.Component {
 
     render() {
         const {classes} = this.props;
-        const {productid,name,username,price,stock} = this.props.data;
+        const {name,username,price,stock} = this.props.data;
         // brand,description,img,name,price,productid,stock,userid,username
 
         return (
@@ -57,7 +56,7 @@ class ProductCard extends React.Component {
                         <mui.CardActions className={classes.action}>
                             {(authType==='invited') ? (
                                 <div />) : (
-                                <CardOptions id={productid}/>
+                                <this.props.options data={this.props.data}/>
                             )}
                         </mui.CardActions>             
                     )}                              

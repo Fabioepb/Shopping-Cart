@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { isLogged } from '../Login/isLogged'
+import { isLogged } from '../../contexts/isLogged'
 import * as mui from 'material-ui/'
-import CommonBar from './commonBar'
-import UserBar from './userBar'
+import CommonBar from './components/commonBar'
+import UserBar from './components/userBar'
 
 const styles = theme => ({
     appBar: {

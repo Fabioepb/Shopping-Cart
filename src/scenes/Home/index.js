@@ -1,13 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { isLogged } from '../Login/isLogged'
-import ProductCard from './productCards'
 import * as mui from 'material-ui'
-// TEST 2
+import ProductCard from './../../components/Products'
+import CartOptions from './../../components/Products/components/cartOptions'
 
 const styles = theme => ({
     root: {
         marginLeft: 20,
+        marginTop: theme.spacing.unit * 2,
     }
 })
 
@@ -24,13 +23,13 @@ class Home extends React.Component {
         const {list} = this.state;
         const cards = list.map((product) =>
             <mui.Grid key={product.productid} item>
-                <ProductCard data={product} />
+                <ProductCard options={CartOptions} data={product} />
             </mui.Grid>
         )
 
         return (
             <div className={classes.root}>
-                <isLogged.Consumer>
+                {/* <isLogged.Consumer>
                     {({authType,changeAuth}) => (
                         <div style={{marginBottom:20}}>
                             <h1>Welcome! {authType} asda1 </h1>
@@ -40,14 +39,14 @@ class Home extends React.Component {
                             </Link>
                         </div>
                     )}
-                </isLogged.Consumer>
+                </isLogged.Consumer> */}
                 <mui.Grid container spacing={24} justify="center">
                     {cards}
                 </mui.Grid>
             </div>
         );
     }
-    componentDidMount() {
+    componentDidMount = () => {
         fetch('http://localhost:10036/product/list', {
             method: 'GET',                        
             headers: {
