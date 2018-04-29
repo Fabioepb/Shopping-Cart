@@ -1,9 +1,9 @@
 import React from 'react'
 import Routes from './routes'
-import TopBar from './components/NavBar'
 import * as mui from 'material-ui'
 import classNames from 'classnames'
-import CartDrawer, {drawerWidth} from './components/Drawer'
+import {TopBar,CartDrawer} from './components/'
+import { drawerWidth } from './components/Drawer'
 import { isLogged } from "./contexts/isLogged";
 
 const styles = theme =>({

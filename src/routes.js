@@ -1,8 +1,6 @@
 import React from 'react'
 import {Switch, Route, Redirect} from 'react-router-dom'
-import Home from './scenes/Home'
-import Login from './scenes/Login/'
-import Profile from './scenes/Profile/'
+import {Home,Login,Profile} from './scenes/'
 import { isLogged } from './contexts/isLogged'
 
 const Routes = () => (

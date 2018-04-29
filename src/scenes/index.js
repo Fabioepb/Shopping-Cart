@@ -1,1 +1,3 @@
-// TODO* Hacer los exports de las escenas aqui
+export {default as Home} from './Home'
+export {default as Login} from './Login'
+export {default as Profile} from './Profile'

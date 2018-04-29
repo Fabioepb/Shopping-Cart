@@ -1,8 +1,6 @@
 import React from 'react'
 import * as mui from 'material-ui'
-import { withStyles } from 'material-ui';
-import AddTab from './components/AddTab';
-import DeleteTab from './components/DeleteTab/';
+import {AddTab,DeleteTab} from './components/';
 
 const styles = theme => ({
     root: {
@@ -47,4 +45,4 @@ class Profile extends React.Component {
 
 
 
-export default withStyles(styles)(Profile)
+export default mui.withStyles(styles)(Profile)

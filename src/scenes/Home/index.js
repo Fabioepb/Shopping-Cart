@@ -1,6 +1,7 @@
 import React from 'react'
 import * as mui from 'material-ui'
-import ProductCard from './../../components/Products'
+import {ProductCard} from './../../components/'
+// TODO: move that component
 import CartOptions from './../../components/Products/components/cartOptions'
 
 const styles = theme => ({
