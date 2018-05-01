@@ -1,6 +1,6 @@
 import { SET_CART_ITEMS, ADD_TO_CART, DELETE_FROM_CART } from "../actions";
 
-function reducers(state = {items: [], item: null}, action) {
+function reducers(state = {items: []}, action) {
     switch(action.type) {
         case SET_CART_ITEMS: {
             return Object.assign({}, state, {
@@ -11,12 +11,15 @@ function reducers(state = {items: [], item: null}, action) {
         case ADD_TO_CART: {
             return Object.assign({}, state, {
                 type: ADD_TO_CART,
-                items: action.items,
+                items: [ ...state.items, action.item],
             });
         }
         case DELETE_FROM_CART: {
-
-            return null;
+            const items = state.items.filter(item => item.id !== action.id);
+            return Object.assign({}, state, {
+                type: DELETE_FROM_CART,
+                items: items,
+            });
         }
         default: {
             return state;

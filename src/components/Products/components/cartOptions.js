@@ -14,7 +14,7 @@ const Options = ({ handleClick }) => (
 class OptionsContainer extends React.Component {
 
     handleClick = () => {
-        let { onCartUpdate } = this.props;
+        let { addItem } = this.props;
         let body = {
             productId: this.props.data.productid,
             quantity: 1, // TODO: cambiar por cantidad DINAMICA
@@ -29,7 +29,7 @@ class OptionsContainer extends React.Component {
             body: JSON.stringify(body),
         }).then(response => response.json())
         .then(data => {
-            onCartUpdate(data.item);
+            addItem(data.item);
         }).catch(error => {
             console.log(error);
         })
@@ -45,7 +45,7 @@ class OptionsContainer extends React.Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onCartUpdate: (item) => {
+        addItem: (item) => {
             dispatch(addToCart(item));
         }
     }

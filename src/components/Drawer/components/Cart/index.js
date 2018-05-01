@@ -31,7 +31,7 @@ class CartContainer extends React.Component {
 
     handleDelete = id => event => {
         let productCartId = id;
-        let {items} = this.state;
+        let {deleteItem} = this.props;
         
         fetch('http://localhost:10036/cart/delete', {
             method:'POST',
@@ -43,10 +43,7 @@ class CartContainer extends React.Component {
             body: JSON.stringify({productCartId}),
         }).then(response => response.json())
             .then(data => {
-                const newItems = items.filter(item => item.id !== productCartId);                
-                this.setState({
-                    items: newItems,
-                })
+                deleteItem(productCartId)
             }).catch(error => {
                 console.log(error);
                 
@@ -61,6 +58,7 @@ class CartContainer extends React.Component {
 
     render() {
         const {items} = this.state;
+        console.log(items);
 
         return <Cart total={0} handleDelete={this.handleDelete} items={items}/>
     }
@@ -76,8 +74,8 @@ const mapDispatchToProps = dispatch => {
         setItems: items => {
             dispatch(setCartItems(items))
         },
-        deleteItem: item => {
-            dispatch(deleteFromCart(item))
+        deleteItem: id => {
+            dispatch(deleteFromCart(id))
         },
     }
 }

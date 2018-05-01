@@ -9,16 +9,16 @@ export function setCartItems(items) {
     }
 }
 
-export function addToCart(items) {
+export function addToCart(item) {
     return {
         type: ADD_TO_CART,
-        items,
+        item,
     }
 }
 
-export function deleteFromCart(item) {
+export function deleteFromCart(id) {
     return {
         type: DELETE_FROM_CART,
-        item,
+        id,
     }
 }
